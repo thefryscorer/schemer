@@ -47,6 +47,7 @@ func printTerminator(colors []color.Color) string {
 		} else if i == len(colors)-1 {
 			output += "#"
 			output += hex.EncodeToString(bytes)
+			output += "\n"
 		}
 	}
 	return output
