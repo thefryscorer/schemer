@@ -1,6 +1,9 @@
 Terminal Colorscheme Generator
 ==============================
 
+# Screenshot #
+![Screenshot](http://dbyron.id.au/static/files/schemer-shot.png)
+
 # Installation #
 
 > go get github.com/thefryscorer/schemer
