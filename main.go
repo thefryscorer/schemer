@@ -7,6 +7,7 @@ import (
 	"image/color"
 	_ "image/jpeg"
 	_ "image/png"
+	"io/ioutil"
 	"log"
 	"os"
 
@@ -82,6 +83,7 @@ func main() {
 		terminal      = flag.String("term", "", "Terminal format to output colors as. Currently supported: \"xfce\" \"lilyterm\" \"terminator\"")
 		minBrightness = flag.Int("minBright", 100, "Minimum brightness for colors")
 		maxBrightness = flag.Int("maxBright", 200, "Maximum brightness for colors")
+		debug         = flag.Bool("debug", false, "Show debugging messages")
 	)
 	flag.Usage = usage
 	flag.Parse()
@@ -92,6 +94,9 @@ func main() {
 	if *minBrightness > 255 || *maxBrightness > 255 {
 		fmt.Print("Minimum and maximum brightness must be an integer between 0 and 255.\n")
 		os.Exit(2)
+	}
+	if !*debug {
+		log.SetOutput(ioutil.Discard)
 	}
 	img := loadImage(flag.Args()[0])
 	w, h := img.Bounds().Max.X, img.Bounds().Max.Y
