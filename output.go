@@ -3,6 +3,7 @@ package main
 import (
 	"encoding/hex"
 	"image/color"
+	"strconv"
 )
 
 func printXfce(colors []color.Color) string {
@@ -25,7 +26,7 @@ func printLilyTerm(colors []color.Color) string {
 		cc := c.(color.NRGBA)
 		bytes := []byte{byte(cc.R), byte(cc.G), byte(cc.B)}
 		output += "Color"
-		output += string(i)
+		output += strconv.Itoa(i)
 		output += " = "
 		output += "#"
 		output += hex.EncodeToString(bytes)
