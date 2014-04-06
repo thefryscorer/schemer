@@ -136,6 +136,8 @@ func main() {
 		fmt.Print(printTerminator(distinctColors))
 	case "xterm":
 		fmt.Print(printXterm(distinctColors))
+	case "konsole":
+		fmt.Print(printKonsole(distinctColors))
 	default:
 		fmt.Print("Did not understand terminal format " + *terminal + "\n")
 	}
