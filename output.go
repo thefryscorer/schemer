@@ -52,3 +52,40 @@ func printTerminator(colors []color.Color) string {
 	}
 	return output
 }
+
+func printXterm(colors []color.Color) string {
+	output := ""
+	output += "! Terminal colors"
+	output += "\n"
+	for i, c := range colors {
+		cc := c.(color.NRGBA)
+		bytes := []byte{byte(cc.R), byte(cc.G), byte(cc.B)}
+		output += "*color"
+		output += strconv.Itoa(i)
+		output += ": #"
+		output += hex.EncodeToString(bytes)
+		output += "\n"
+	}
+	return output
+}
+
+func printKonsole(colors []color.Color) string {
+	output := ""
+	for i, c := range colors {
+		cc := c.(color.NRGBA)
+		output += "[Color"
+		if i > 7 {
+			output += strconv.Itoa(i-8)
+			output += "Intense"
+		} else {
+			output += strconv.Itoa(i)
+		}
+		output += "]\n"
+		output += "Color="
+		output += strconv.Itoa(int(cc.R)) + ","
+		output += strconv.Itoa(int(cc.G)) + ","
+		output += strconv.Itoa(int(cc.B)) + "\n"
+		output += "Transparency=false\n\n"
+	}
+	return output
+}
