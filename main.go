@@ -134,6 +134,8 @@ func main() {
 		fmt.Print(printLilyTerm(distinctColors))
 	case "terminator":
 		fmt.Print(printTerminator(distinctColors))
+	case "roxterm":
+		fmt.Print(printRoxTerm(distinctColors))
 	default:
 		fmt.Print("Did not understand terminal format " + *terminal + "\n")
 	}
