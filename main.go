@@ -80,7 +80,7 @@ func main() {
 		fuzzyness     = flag.Int("fuzz", 5, "Fuzzyness value, lower values take much longer but can potentially get colors that have been missed")
 		threshold     = flag.Int("t", 50, "Threshold that colors must differ by")
 		display       = flag.Bool("d", false, "Display colors in sdl window")
-		terminal      = flag.String("term", "", "Terminal format to output colors as. Currently supported: \"xfce\" \"lilyterm\" \"terminator\"")
+		terminal      = flag.String("term", "", "Terminal format to output colors as. Currently supported: \"xfce\" \"lilyterm\" \"terminator\" \"roxterm\" \"xterm\" \"konsole\"")
 		minBrightness = flag.Int("minBright", 100, "Minimum brightness for colors")
 		maxBrightness = flag.Int("maxBright", 200, "Maximum brightness for colors")
 		debug         = flag.Bool("debug", false, "Show debugging messages")
@@ -138,6 +138,8 @@ func main() {
 		fmt.Print(printXterm(distinctColors))
 	case "konsole":
 		fmt.Print(printKonsole(distinctColors))
+	case "roxterm":
+		fmt.Print(printRoxTerm(distinctColors))
 	default:
 		fmt.Print("Did not understand terminal format " + *terminal + "\n")
 	}

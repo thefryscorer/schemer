@@ -66,6 +66,7 @@ func printXterm(colors []color.Color) string {
 		output += hex.EncodeToString(bytes)
 		output += "\n"
 	}
+
 	return output
 }
 
@@ -75,7 +76,7 @@ func printKonsole(colors []color.Color) string {
 		cc := c.(color.NRGBA)
 		output += "[Color"
 		if i > 7 {
-			output += strconv.Itoa(i-8)
+			output += strconv.Itoa(i - 8)
 			output += "Intense"
 		} else {
 			output += strconv.Itoa(i)
@@ -87,5 +88,24 @@ func printKonsole(colors []color.Color) string {
 		output += strconv.Itoa(int(cc.B)) + "\n"
 		output += "Transparency=false\n\n"
 	}
+
+	return output
+}
+
+func printRoxTerm(colors []color.Color) string {
+	output := "[roxterm colour scheme]\n"
+	output += "pallete_size=16\n"
+
+	for i, c := range colors {
+		cc := c.(color.NRGBA)
+		bytes := []byte{byte(cc.R), byte(cc.G), byte(cc.B)}
+		output += "color"
+		output += strconv.Itoa(i)
+		output += " = "
+		output += "#"
+		output += hex.EncodeToString(bytes)
+		output += "\n"
+	}
+
 	return output
 }
