@@ -10,6 +10,7 @@ import (
 	"io/ioutil"
 	"log"
 	"os"
+	"strings"
 
 	"github.com/jqln-0/colorshow"
 )
@@ -76,10 +77,14 @@ func usage() {
 }
 
 func main() {
+	terminalSupport := "Terminal format to output colors as. Currently supported: \n"
+	for _, t := range terminals {
+		terminalSupport += strings.Join([]string{"    ", t.friendlyName, ":", t.flagName, "\n"}, " ")
+	}
 	var (
 		threshold     = flag.Int("t", 50, "Threshold for minimum color difference")
 		display       = flag.Bool("d", false, "Display colors in SDL window")
-		terminal      = flag.String("term", "", "Terminal format to output colors as. Currently supported: \"xfce\" \"lilyterm\" \"terminator\" \"roxterm\" \"xterm\" \"konsole\" \"iterm2\"")
+		terminal      = flag.String("term", "", terminalSupport)
 		minBrightness = flag.Int("minBright", 50, "Minimum brightness for colors")
 		maxBrightness = flag.Int("maxBright", 200, "Maximum brightness for colors")
 		debug         = flag.Bool("debug", false, "Show debugging messages")
@@ -131,22 +136,15 @@ func main() {
 		colorshow.DisplaySwatches(distinctColors)
 	}
 
-	switch *terminal {
-	case "xfce":
-		fmt.Print(printXfce(distinctColors))
-	case "lilyterm":
-		fmt.Print(printLilyTerm(distinctColors))
-	case "terminator":
-		fmt.Print(printTerminator(distinctColors))
-	case "xterm":
-		fmt.Print(printXterm(distinctColors))
-	case "konsole":
-		fmt.Print(printKonsole(distinctColors))
-	case "roxterm":
-		fmt.Print(printRoxTerm(distinctColors))
-	case "iterm2":
-		fmt.Print(printITerm2(distinctColors))
-	default:
-		fmt.Print("Did not understand terminal format " + *terminal + "\n")
+	terminalMatch := false
+	for _, t := range terminals {
+		if *terminal == t.flagName {
+			fmt.Print(t.output(distinctColors))
+			terminalMatch = true
+			break
+		}
+	}
+	if !terminalMatch {
+		fmt.Printf("Did not recognise format %v.", *terminal)
 	}
 }

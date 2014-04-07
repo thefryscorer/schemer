@@ -6,6 +6,53 @@ import (
 	"strconv"
 )
 
+type outputFunction (func([]color.Color) string)
+
+type Terminal struct {
+	friendlyName string
+	flagName     string
+	output       outputFunction
+}
+
+// Terminals are defined here
+var terminals = []Terminal{
+	{
+		friendlyName: "XFCE4Terminal",
+		flagName:     "xfce",
+		output:       printXfce,
+	},
+	{
+		friendlyName: "LilyTerm",
+		flagName:     "lilyterm",
+		output:       printLilyTerm,
+	},
+	{
+		friendlyName: "Terminator",
+		flagName:     "terminator",
+		output:       printTerminator,
+	},
+	{
+		friendlyName: "ROXTerm",
+		flagName:     "roxterm",
+		output:       printRoxTerm,
+	},
+	{
+		friendlyName: "urxvt/rxvt/xterm/aterm",
+		flagName:     "xterm",
+		output:       printXterm,
+	},
+	{
+		friendlyName: "Konsole",
+		flagName:     "konsole",
+		output:       printKonsole,
+	},
+	{
+		friendlyName: "iTerm2",
+		flagName:     "iterm2",
+		output:       printITerm2,
+	},
+}
+
 func printXfce(colors []color.Color) string {
 	output := ""
 	output += "ColorPalette="
@@ -123,15 +170,15 @@ func printITerm2(colors []color.Color) string {
 		output += "\t<dict>\n"
 		output += "\t\t<key>Blue Component</key>\n"
 		output += "\t\t<real>"
-		output += strconv.FormatFloat(float64(cc.B) / 255, 'f', 17, 64)
+		output += strconv.FormatFloat(float64(cc.B)/255, 'f', 17, 64)
 		output += "</real>\n"
 		output += "\t\t<key>Green Component</key>\n"
 		output += "\t\t<real>"
-		output += strconv.FormatFloat(float64(cc.G) / 255, 'f', 17, 64)
+		output += strconv.FormatFloat(float64(cc.G)/255, 'f', 17, 64)
 		output += "</real>\n"
 		output += "\t\t<key>Red Component</key>\n"
 		output += "\t\t<real>"
-		output += strconv.FormatFloat(float64(cc.R) / 255, 'f', 17, 64)
+		output += strconv.FormatFloat(float64(cc.R)/255, 'f', 17, 64)
 		output += "</real>\n"
 		output += "\t</dict>\n"
 	}
