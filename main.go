@@ -77,9 +77,8 @@ func usage() {
 
 func main() {
 	var (
-		fuzzyness     = flag.Int("fuzz", 5, "Fuzzyness value, lower values take much longer but can potentially get colors that have been missed")
-		threshold     = flag.Int("t", 50, "Threshold that colors must differ by")
-		display       = flag.Bool("d", false, "Display colors in sdl window")
+		threshold     = flag.Int("t", 50, "Threshold for minimum color difference")
+		display       = flag.Bool("d", false, "Display colors in SDL window")
 		terminal      = flag.String("term", "", "Terminal format to output colors as. Currently supported: \"xfce\" \"lilyterm\" \"terminator\" \"roxterm\" \"xterm\" \"konsole\" \"iterm2\"")
 		minBrightness = flag.Int("minBright", 100, "Minimum brightness for colors")
 		maxBrightness = flag.Int("maxBright", 200, "Maximum brightness for colors")
@@ -95,14 +94,19 @@ func main() {
 		fmt.Print("Minimum and maximum brightness must be an integer between 0 and 255.\n")
 		os.Exit(2)
 	}
+	if *threshold > 255 {
+		fmt.Print("Threshold should be an integer between 0 and 255.\n")
+		os.Exit(2)
+	}
 	if !*debug {
 		log.SetOutput(ioutil.Discard)
 	}
+	fuzzyness := 5
 	img := loadImage(flag.Args()[0])
 	w, h := img.Bounds().Max.X, img.Bounds().Max.Y
 	colors := make([]color.Color, 0, w*h)
-	for x := 0; x < w; x += *fuzzyness {
-		for y := 0; y < h; y += *fuzzyness {
+	for x := 0; x < w; x += fuzzyness {
+		for y := 0; y < h; y += fuzzyness {
 			col := color.NRGBAModel.Convert(img.At(x, y))
 			colors = append(colors, col)
 		}
