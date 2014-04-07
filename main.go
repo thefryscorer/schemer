@@ -106,6 +106,8 @@ func main() {
 	if !*debug {
 		log.SetOutput(ioutil.Discard)
 	}
+
+	// Load the image and create array of colors
 	fuzzyness := 5
 	img := loadImage(flag.Args()[0])
 	w, h := img.Bounds().Max.X, img.Bounds().Max.Y
@@ -116,8 +118,10 @@ func main() {
 			colors = append(colors, col)
 		}
 	}
+	// Get the distinct colors from the array by comparing differences with a threshold
 	distinctColors := getDistinctColors(colors, *threshold, *minBrightness, *maxBrightness)
 
+	// Ensure there are 16 colors
 	count := 0
 	for len(distinctColors) < 16 {
 		count++
@@ -136,6 +140,7 @@ func main() {
 		colorshow.DisplaySwatches(distinctColors)
 	}
 
+	// Output the configuration specified
 	terminalMatch := false
 	for _, t := range terminals {
 		if *terminal == t.flagName {
@@ -145,6 +150,6 @@ func main() {
 		}
 	}
 	if !terminalMatch {
-		fmt.Printf("Did not recognise format %v.", *terminal)
+		fmt.Printf("Did not recognise format %v. \n", *terminal)
 	}
 }
