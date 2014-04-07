@@ -37,7 +37,7 @@ var terminals = []Terminal{
 		output:       printRoxTerm,
 	},
 	{
-		friendlyName: "urxvt/rxvt/xterm/aterm",
+		friendlyName: "rxvt/xterm/aterm",
 		flagName:     "xterm",
 		output:       printXterm,
 	},
@@ -50,6 +50,11 @@ var terminals = []Terminal{
 		friendlyName: "iTerm2",
 		flagName:     "iterm2",
 		output:       printITerm2,
+	},
+	{
+		friendlyName: "urxvt",
+		flagName:     "urxvt",
+		output:       printURxvt,
 	},
 }
 
@@ -184,5 +189,20 @@ func printITerm2(colors []color.Color) string {
 	}
 	output += "</dict>\n"
 	output += "</plist>\n"
+	return output
+}
+
+func printURxvt(colors []color.Color) string {
+	output := ""
+	for i, c := range colors {
+		cc := c.(color.NRGBA)
+		bytes := []byte{byte(cc.R), byte(cc.G), byte(cc.B)}
+		output += "URxvt*color"
+		output += strconv.Itoa(i)
+		output += ": "
+		output += "#"
+		output += hex.EncodeToString(bytes)
+		output += "\n"
+	}
 	return output
 }
