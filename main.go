@@ -80,7 +80,7 @@ func main() {
 		threshold     = flag.Int("t", 50, "Threshold for minimum color difference")
 		display       = flag.Bool("d", false, "Display colors in SDL window")
 		terminal      = flag.String("term", "", "Terminal format to output colors as. Currently supported: \"xfce\" \"lilyterm\" \"terminator\" \"roxterm\" \"xterm\" \"konsole\" \"iterm2\"")
-		minBrightness = flag.Int("minBright", 100, "Minimum brightness for colors")
+		minBrightness = flag.Int("minBright", 50, "Minimum brightness for colors")
 		maxBrightness = flag.Int("maxBright", 200, "Maximum brightness for colors")
 		debug         = flag.Bool("debug", false, "Show debugging messages")
 	)
