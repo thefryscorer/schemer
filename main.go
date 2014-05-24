@@ -84,17 +84,13 @@ func main() {
 	var (
 		threshold     = flag.Int("t", 50, "Threshold for minimum color difference")
 		display       = flag.Bool("d", false, "Display colors in SDL window")
-		terminal      = flag.String("term", "", terminalSupport)
+		terminal      = flag.String("term", "default", terminalSupport)
 		minBrightness = flag.Int("minBright", 50, "Minimum brightness for colors")
 		maxBrightness = flag.Int("maxBright", 200, "Maximum brightness for colors")
 		debug         = flag.Bool("debug", false, "Show debugging messages")
 	)
 	flag.Usage = usage
 	flag.Parse()
-	if *terminal == "" {
-		fmt.Println("Must specify terminal format")
-		usage()
-	}
 	if *minBrightness > 255 || *maxBrightness > 255 {
 		fmt.Print("Minimum and maximum brightness must be an integer between 0 and 255.\n")
 		os.Exit(2)

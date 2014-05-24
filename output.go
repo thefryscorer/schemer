@@ -17,6 +17,11 @@ type Terminal struct {
 // Terminals are defined here
 var terminals = []Terminal{
 	{
+		friendlyName: "Default output (colors only)",
+		flagName:     "default",
+		output:       printColors,
+	},
+	{
 		friendlyName: "XFCE4Terminal",
 		flagName:     "xfce",
 		output:       printXfce,
@@ -200,6 +205,18 @@ func printURxvt(colors []color.Color) string {
 		output += "URxvt*color"
 		output += strconv.Itoa(i)
 		output += ": "
+		output += "#"
+		output += hex.EncodeToString(bytes)
+		output += "\n"
+	}
+	return output
+}
+
+func printColors(colors []color.Color) string {
+	output := ""
+	for _, c := range colors {
+		cc := c.(color.NRGBA)
+		bytes := []byte{byte(cc.R), byte(cc.G), byte(cc.B)}
 		output += "#"
 		output += hex.EncodeToString(bytes)
 		output += "\n"
