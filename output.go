@@ -61,6 +61,11 @@ var terminals = []Terminal{
 		flagName:     "urxvt",
 		output:       printURxvt,
 	},
+	{
+		friendlyName: "Chrome Shell",
+		flagName:     "chrome",
+		output:       printChrome,
+	},
 }
 
 func printXfce(colors []color.Color) string {
@@ -221,5 +226,25 @@ func printColors(colors []color.Color) string {
 		output += hex.EncodeToString(bytes)
 		output += "\n"
 	}
+	return output
+}
+func printChrome(colors []color.Color) string {
+	output := "{"
+	for i, c := range colors {
+		cc := c.(color.NRGBA)
+		bytes := []byte{byte(cc.R), byte(cc.G), byte(cc.B)}
+		output += " \""
+		output += strconv.Itoa(i)
+		output += "\""
+		output += ": "
+		output += " \""
+		output += "#"
+		output += hex.EncodeToString(bytes)
+		output += "\" "
+		if i != len(colors)-1 {
+			output += ", "
+		}
+	}
+	output += "}\n"
 	return output
 }
