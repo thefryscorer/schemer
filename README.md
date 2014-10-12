@@ -2,7 +2,7 @@ Terminal Colorscheme Generator
 ==============================
 
 ## Screenshot 
-![Screenshot](http://dbyron.id.au/static/files/linuxscreens/schemer-shot.png)
+![Screenshot](http://imgur.com/a/OEcbn#TSLluID)
 
 ## Installation 
 
