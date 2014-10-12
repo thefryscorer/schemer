@@ -2,7 +2,7 @@ Terminal Colorscheme Generator
 ==============================
 
 ## Screenshot 
-![Screenshot](http://dbyron.id.au/static/files/schemer-shot.png)
+![Screenshot](http://dbyron.id.au/static/files/linuxscreens/schemer-shot.png)
 
 ## Installation 
 
@@ -21,7 +21,15 @@ Then copy the generated config lines into your terminal config file.
 - Configurable minimum and maximum brightness value
 - Can preview colorscheme in SDL window
 
-## To do
+## Supported output formats
 
-- Support for more configuration file formats
-- Automatic changes to configuration files
+- Colours in just plain text (default)
+- Konsole
+- xterm/rxvt/aterm
+- urxvt
+- iTerm2
+- XFCE Terminal
+- Roxterm
+- LilyTerm
+- Terminator
+- Chrome Shell
