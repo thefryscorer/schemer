@@ -2,7 +2,7 @@ Terminal Colorscheme Generator
 ==============================
 
 ## Screenshot 
-![Screenshot](http://imgur.com/a/OEcbn#TSLluID)
+![Screenshot](http://i.imgur.com/TSLluID.png)
 
 ## Installation 
 
