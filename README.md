@@ -28,11 +28,11 @@ NOTE: You don't need to (and shouldn't) set the $GOROOT variable. This is handle
 #### Installing SDL1.2
 This program also makes use of SDL1.2 for the color preview window (which you can use by adding the "-d" flag in schemer). As such, SDL1.2 will need to be installed on your system for you to build and run schemer.
 
-*To install SDL1.2 in ArchLinux:*
+**To install SDL1.2 in ArchLinux:**
 
 > sudo pacman -S sdl sdl_image sdl_ttf sdl_mixer
 
-*To install SDL1.2 on another system:*
+**To install SDL1.2 on another system:**
 
 Learn how to use Google and your package manager. Both are very useful. 
 
