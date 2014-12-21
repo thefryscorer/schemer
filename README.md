@@ -19,9 +19,9 @@ To build this program, you will need to have Go installed and properly configure
 
 You will also need to set the GOPATH variable so that Go knows where to put things. You can do this by running:
 
-> export $GOPATH=/home/<<USER>>/Go
+> export $GOPATH=/home/<USER>/Go
 
-Where <<USER>> is your username.
+Where <USER> is your username.
 
 NOTE: You don't need to (and shouldn't) set the $GOROOT variable. This is handled for you and you shouldn't mess with it.
 
@@ -41,7 +41,7 @@ You should now be able to install schemer using the command:
 
 > go get github.com/thefryscorer/schemer
 
-And it will be built in your GOPATH directory, in a subdirectory named 'bin'. To run it, you can either add /home/<<USER>>/Go/bin to your system path and run it as you would any other command. Or cd into the bin directory and run it with:
+And it will be built in your GOPATH directory, in a subdirectory named 'bin'. To run it, you can either add /home/<USER>/Go/bin to your system path and run it as you would any other command. Or cd into the bin directory and run it with:
 
 > ./schemer
 
