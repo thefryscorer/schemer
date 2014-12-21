@@ -6,6 +6,10 @@ Terminal Colorscheme Generator
 
 ## Installation 
 
+### AUR
+
+There is now an AUR package for schemer at https://aur.archlinux.org/packages/schemer/
+
 ### Short version
 
 > go get github.com/thefryscorer/schemer
