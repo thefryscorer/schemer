@@ -72,3 +72,4 @@ Then copy the generated config lines into your terminal config file.
 - LilyTerm
 - Terminator
 - Chrome Shell
+- OS X Terminal
