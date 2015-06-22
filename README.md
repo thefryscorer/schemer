@@ -36,11 +36,10 @@ This program also makes use of SDL1.2 for the color preview window (which you ca
 
 **To install SDL1.2 in Mac OS:**
 
-> brew install go sdl sdl_image sdl_ttf sdl_mixer
+> brew install sdl sdl_image sdl_ttf sdl_mixer
 
-If you haven't installed HomeBrew, run the following command
+If you haven't installed HomeBrew, you can find it at http://brew.sh 
 
-> ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 **To install SDL1.2 on another system:**
 
