@@ -35,8 +35,8 @@ var terminals = []Terminal{
 	},
 	{
 		friendlyName: "Termite",
-		flagName:	  "termite",
-		output:		  printTermite,
+		flagName:     "termite",
+		output:       printTermite,
 	},
 	{
 		friendlyName: "Terminator",
