@@ -34,6 +34,11 @@ var terminals = []Terminal{
 		output:       printLilyTerm,
 	},
 	{
+		friendlyName: "Termite",
+		flagName:     "termite",
+		output:       printTermite,
+	},
+	{
 		friendlyName: "Terminator",
 		flagName:     "terminator",
 		output:       printTerminator,
@@ -95,6 +100,21 @@ func printLilyTerm(colors []color.Color) string {
 		cc := c.(color.NRGBA)
 		bytes := []byte{byte(cc.R), byte(cc.G), byte(cc.B)}
 		output += "Color"
+		output += strconv.Itoa(i)
+		output += " = "
+		output += "#"
+		output += hex.EncodeToString(bytes)
+		output += "\n"
+	}
+	return output
+}
+
+func printTermite(colors []color.Color) string {
+	output := ""
+	for i, c := range colors {
+		cc := c.(color.NRGBA)
+		bytes := []byte{byte(cc.R), byte(cc.G), byte(cc.B)}
+		output += "color"
 		output += strconv.Itoa(i)
 		output += " = "
 		output += "#"
