@@ -5,16 +5,12 @@ Terminal Colorscheme Generator
 
 If you have no strong reason to use this version specifically, please instead use [schemer2](https://github.com/thefryscorer/schemer2). It has many more features, and a smarter interface. Any new features added will be added to schemer2.
 
-The reason schemer2 is a separate project is to support the AUR package, and not break the existing workflow of anybody who has incorporated schemer into scripts or other programs. Additionally, schemer2 does not feature the SDL rendered preview.
+The reason schemer2 is a separate project is to support the AUR package (Now removed), and not break the existing workflow of anybody who has incorporated schemer into scripts or other programs. Additionally, schemer2 does not feature the SDL rendered preview.
 
 ## Screenshot 
 ![Screenshot](http://i.imgur.com/TSLluID.png)
 
 ## Installation 
-
-### AUR
-
-There is now an AUR package for schemer at https://aur.archlinux.org/packages/schemer/
 
 ### Short version
 
